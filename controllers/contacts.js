@@ -1,6 +1,6 @@
 
 
-const Contact = require("../models/contact");
+const { Contact } = require("../models/contact");
 const { RequestError } = require("../helpers/index");
 const { crtlWrapper } = require("../helpers/index");
 
