@@ -12,13 +12,13 @@ router.get('/', ctrl.getAllContacts);
 
 router.get('/:contactId',isValidId, ctrl.getById);
 
-router.post('/', validateBody(schemas.contactSchema), ctrl.add);
+router.post('/', validateBody(schemas.contactAddSchema), ctrl.add);
 
 
 router.delete('/:contactId',isValidId, ctrl.remove);
   
 
-router.put('/:contactId', isValidId, validateBody(schemas.contactSchema), ctrl.updateById);
+router.put('/:contactId', isValidId, validateBody(schemas.contactAddSchema), ctrl.updateById);
 
 router.patch('/:contactId/favorite',isValidId, validateBody(schemas.updateFavoriteSchema), ctrl.updateFavorite);
 

@@ -2,7 +2,7 @@
 const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 
-const {handleMongooseError}= require("../helpers")
+const {handleMongooseError, handleUpdateValidate} = require("./hooks")
 
 const contactSchema = new Schema({
   name: {
@@ -19,19 +19,24 @@ const contactSchema = new Schema({
     type: Boolean,
     default: false,
   },
-},{ versionKey: false, timestamps: true });
+}, { versionKey: false, timestamps: true });
+
+
+contactSchema.pre("findOneAndUpdate", handleUpdateValidate);
 
 contactSchema.post("save", handleMongooseError);
+contactSchema.post("findOneAndUpdate", handleMongooseError);
 
 const contactAddSchema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-    phone: Joi.string().required(),
+  phone: Joi.string().required(),
+    favorite: Joi.boolean(),
 })
 
 const updateFavoriteSchema = Joi.object({
-    favorite: Joi.bool().required(),
-})
+   favorite: Joi.boolean().required(),
+});
 
 const schemas = {
   contactAddSchema,
