@@ -45,7 +45,7 @@ const updateById = async (req, res) => {
  
 }
 
-const updateFavorite = async (req, res) => {
+const updateStatusContact = async (req, res) => {
        const { contactId } = req.params;
     const result = await Contact.findByIdAndUpdate(contactId, req.body, {new:true});
     if (!result) {
@@ -61,5 +61,5 @@ module.exports = {
     add: crtlWrapper(add),
     remove: crtlWrapper(remove),
     updateById: crtlWrapper(updateById),
-    updateFavorite:crtlWrapper(updateFavorite),
+    updateStatusContact:crtlWrapper(updateStatusContact),
 }

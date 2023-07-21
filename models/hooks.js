@@ -1,9 +1,9 @@
-const handleMongooseError = (error, data, next) => {
+ const handleMongooseError = (error, data, next) => {
     error.status = 400;
     next()
 };
 
-const handleUpdateValidate = function(next){
+ const handleUpdateValidate = function(next){
     this.options.runValidators = true;
     next();
 }
