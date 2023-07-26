@@ -9,7 +9,8 @@ const { validateBody,isEmptyBody } = require("../../middlewares/");
 
 const authRouter = express.Router();
 
-authRouter.post('/register', isEmptyBody, validateBody(schemas.registerSchema), ctrl.register)
+authRouter.post('/register', isEmptyBody, validateBody(schemas.registerSchema), ctrl.register);
+authRouter.post('/login', isEmptyBody, validateBody(schemas.loginSchema), ctrl.login);
 
 
 
