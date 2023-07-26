@@ -1,12 +1,15 @@
 const express = require('express');
 
-const authRouter = express.Router();
 const { schemas } = require('../../models/user');
+
 const ctrl = require("../../controllers/auth-controller");
 
-const { validateBody} = require("../../middlewares");
+const { validateBody,isEmptyBody } = require("../../middlewares/");
 
-authRouter.post('/signup', validateBody(schemas.registerSchema), ctrl.register)
+
+const authRouter = express.Router();
+
+authRouter.post('/register', isEmptyBody, validateBody(schemas.registerSchema), ctrl.register)
 
 
 

@@ -3,7 +3,7 @@ const Joi = require("joi");
 
 const { handleMongooseError, handleUpdateValidate } = require("./hooks");
 
-const emailRegexp = require('../constants/user-constants');
+const {emailRegexp} = require('../constants/user-constants');
 
 const userSchema = new Schema({
     
