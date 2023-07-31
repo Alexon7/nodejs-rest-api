@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const gravatar = require("gravatar");
 const path = require('path')
-const fs = require("fs");
+const fs = require("fs/promises");
 const Jimp = require('jimp');
 
 const { RequestError } = require("../helpers/index");
@@ -76,7 +76,7 @@ const updateSubscriptionUser = async (req, res) => {
 }
 
 const updateAvatar = async (req, res) => {
-    const { _id } = req.user;
+     const { _id } = req.user;
 
     const { path: tempUpload, originalname } = req.file;
 
