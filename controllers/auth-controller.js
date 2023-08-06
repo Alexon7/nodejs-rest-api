@@ -38,7 +38,7 @@ const register = async (req, res) => {
     }
 
     await sendEMail(verifyEmail);
-    
+
     res.status(201).json({
         user: {
       email: result.email,
@@ -77,13 +77,13 @@ const resendVerify = async (req, res) => {
   const verifyEmail = {
     to: email,
     subject: "Verify email",
-    html: `<a target="_blank" href="${BASE_URL}/users/verify/${user.verificationToken}">Click to verification</a>`,
+    html: `<a target="_blank" href="${BASE_URL}/users/verify/${user.verificationToken}">Click Verify email</a>`,
   };
 
   await sendEMail(verifyEmail);
 
   res.json({
-    message: "Verification email success",
+    message: "Verification email sent",
   });
 }
 
